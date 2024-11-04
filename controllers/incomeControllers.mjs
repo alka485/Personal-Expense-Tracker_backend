@@ -17,7 +17,7 @@ const CreateIncome = async (req,res) => {
     }
 };
 
-const ReadIncome = async(req,res) {
+const ReadIncome = async(req,res) => {
     try {
         //Get data save to variable
         const allIncomes = await Incomes.find({});
