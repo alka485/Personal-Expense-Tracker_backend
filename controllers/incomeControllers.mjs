@@ -14,7 +14,19 @@ const CreateIncome = async (req,res) => {
         console.error(err);
         res.status(500).json({msg: 'Server Error'});
         
-    
-
     }
-}
+};
+
+const ReadIncome = async(req,res) {
+    try {
+        //Get data save to variable
+        const allIncomes = await Incomes.find({});
+        //Send data to front end: res
+        res.json(allIncomes);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg: 'Server Error'});     
+    }
+};
+
+export default {CreateIncome , ReadIncome};
