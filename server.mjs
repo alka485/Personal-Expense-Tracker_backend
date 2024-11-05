@@ -5,6 +5,10 @@ import connectDB from './config/db.mjs';
 import incomeRoutes from './routes/income.mjs';
 import Incomes from './models/incomeSchema.mjs'
 import incomeData from './utilities/incomeData.mjs'
+import expenseRoutes from './routes/expense.mjs';
+import Expenses from './models/expenseSchema.mjs'
+import expenseData from './utilities/expenseData.mjs'
+
 
 //Configurations
 dotenv.config();
@@ -19,10 +23,14 @@ app.use(express.json());
 
 //Routes
 app.use('/income', incomeRoutes);
+app.use('/expense', expenseRoutes);
 
 //Create a seed route to fill our database with data
 app.get('/seed',async(req,res) => {
+    await Incomes.deleteMany(); // Optional: Clear existing data
+    await Expenses.deleteMany(); // Optional: Clear existing data
     await Incomes.create(incomeData);
+    await Expenses.create(expenseData);
     res.send('seeding db')
 })
 
