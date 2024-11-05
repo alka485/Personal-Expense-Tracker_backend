@@ -13,10 +13,16 @@ import expenseData from './utilities/expenseData.mjs'
 //Configurations
 dotenv.config();
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
 //Connect to DB
 connectDB();
+
+// Use CORS middleware
+app.use(cors({
+  origin: 'http://localhost:5174' 
+}));
 
 //Middleware
 app.use(express.json());
