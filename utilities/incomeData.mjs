@@ -6,4 +6,4 @@ const incomeData = [
 
 ];
 
-export default incomeData
+export default incomeData;
